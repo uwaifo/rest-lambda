@@ -1,0 +1,58 @@
+## Intellij
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/encodings.xml
+.idea/**/compiler.xml
+.idea/**/misc.xml
+.idea/**/modules.xml
+.idea/**/vcs.xml
+
+## VSCode
+.vscode/
+
+## File-based project format:
+*.iws
+*.iml
+.idea/
+
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.dat
+*.DS_Store
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Goreleaser builds
+**/dist/**
+
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Crash log files
+crash.log
+
+# Exclude all .tfvars files, which are likely to contain sentitive data, such as
+# password, private keys, and other secrets. These should not be part of version 
+# control as they are data points which are potentially sensitive and subject 
+# to change depending on the environment.
+#
+*.tfvars
+
+
+# Exclude tfplan
+tfplan
+
+
+
