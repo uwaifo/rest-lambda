@@ -54,5 +54,9 @@ crash.log
 # Exclude tfplan
 tfplan
 
+# my notes
+notes.txt
 
-
+.terraform
+terraform.tfstate
+terraform.tfstate.backup

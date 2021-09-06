@@ -1,1 +1,60 @@
 github.com/TheGuarantors/pms-rest-api-service
+
+
+https://052xjwwvob.execute-api.us-east-1.amazonaws.com/v1/hello?name=Gloria
+
+
+https://www.kantega.no/blogg/running-go-and-react-on-aws-using-lambda
+
+
+https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_resource.html
+"Resource": [
+    "arn:aws:dynamodb:us-east-2:account-ID-without-hyphens:table/books_table",
+    "arn:aws:dynamodb:us-east-2:account-ID-without-hyphens:table/magazines_table"
+]
+
+
+# ADD ROLE TO THE LAMBDA FUNCTION
+resource "aws_iam_role" "pms-lambda-role" {
+  name               = "pms-lambda-role"
+  assume_role_policy = <<POLICY
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "logs:*",
+                "sns:*",
+                "states:*",
+                "sqs:*",
+                "s3:*",
+                "lambda:InvokeFunction",
+                "iam:ListRoles",
+                "iam:ListInstanceProfiles",
+                "iam:PassRole",
+                "cloudwatch:GetMetricStatistics"
+            ],
+            "Principal": {
+                "Service": "lambda.amazonaws.com"
+            } 
+        }
+    ]
+}
+POLICY
+}
+
+/////////
+curl -i https://v6tstgylke.execute-api.us-east-1.amazonaws.com/v1
+ 
+
+ ///////////
+
+ Terraform RDS
+
+
+ /////////
+ variable "lambda_role" {
+  default = "arn:aws:iam::516243591854:role/lambda-role"
+}
