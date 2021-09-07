@@ -60,3 +60,5 @@ notes.txt
 .terraform
 terraform.tfstate
 terraform.tfstate.backup
+
+vendor
