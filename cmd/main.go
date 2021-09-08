@@ -60,9 +60,6 @@ var sampleLandlords = []landlord{
 	},
 }
 
-//----------
-// Handlers
-//----------
 func init() {
 	err := godotenv.Load(".env")
 
@@ -92,13 +89,9 @@ func main() {
 		lambda.Start(getHandler(e))
 	} else {
 		fmt.Printf("Enviroment : %s", env)
-		//server.Logger.Fatal(server.Start(":3201"))
-		// Start server
 		e.Logger.Fatal(e.Start(":9090"))
 	}
 
-	// Start server
-	//e.Logger.Fatal(e.Start(":9090"))
 }
 
 func getHandler(server *echo.Echo) func(ctx context.Context, req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
@@ -124,7 +117,7 @@ func GetLandlord(c echo.Context) error {
 		}
 
 	}
-	return c.JSON(http.StatusOK, landlord)
+	return c.JSON(http.StatusOK, landlord.Name)
 }
 func GetAllPropertiesOfLandlord(c echo.Context) error {
 	id, _ := strconv.Atoi(c.Param("id"))

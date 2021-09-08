@@ -3,7 +3,7 @@ resource "null_resource" "compile" {
   triggers = {
     build_number = timestamp()
   }
- 
+
   // minigin
   provisioner "local-exec" {
     command = "GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o ../target/pms-rest-api-lambda-bin -ldflags '-w' ../cmd/main.go"
@@ -33,7 +33,7 @@ resource "aws_lambda_function" "pms-rest-api-lambda" {
   timeout          = 20
   environment {
     variables = {
-      APP_ENV        = "production"
+      APP_ENV        = var.app_enviroment
       SYSTEM_SNS_ARN = aws_sns_topic.pms-system-notifications.arn
       TASK_SNS_ARN   = aws_sns_topic.pms-task-notifications.arn
       REGION         = var.region
@@ -41,7 +41,8 @@ resource "aws_lambda_function" "pms-rest-api-lambda" {
       DB_PASSWORD    = var.database_password
       DB_USERNAME    = var.database_username
       DB_DBNAME      = var.dev_database_name
-    DB_URL = "tgpisdevdb.chqiulfy2dsu.us-east-1.rds.amazonaws.com" }
+      DB_URL         = var.database_uri
+    }
   }
 }
 
